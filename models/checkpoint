@@ -1,0 +1,4 @@
+model_checkpoint_path: "smallA_100.ckpt"
+all_model_checkpoint_paths: "smallA_0.ckpt"
+all_model_checkpoint_paths: "smallA_50.ckpt"
+all_model_checkpoint_paths: "smallA_100.ckpt"

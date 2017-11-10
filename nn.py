@@ -18,13 +18,13 @@ with tf.Session() as sess:
 
     saver = tf.train.Saver()
 
-    for step in range(1000):
+    for step in range(500):
         batch = random.sample(data.train_dataset, 2000)
         inputs_batch, labels_batch = zip(*batch)
         loss_output, prediction_output, _ = sess.run([nn.loss, nn.logits, nn.train], feed_dict={nn.input_placeholder: inputs_batch, nn.label_placeholder: labels_batch})
 
         if step % 50 == 0:
-            eval = random.sample(data.test_dataset, 500)
+            eval = random.sample(data.test_dataset, 1000)
             inputs_eval, labels_eval = zip(*eval)
 
 
@@ -48,8 +48,8 @@ with tf.Session() as sess:
                 best_accuracy = accuracy_eval
                 best_step = step
 
-            save_path = saver.save(sess, "models/smallA_{}.ckpt".format(step))
-            #print("Model saved in file: %s" % save_path)
+                save_path = saver.save(sess, "models/smallA_{}.ckpt".format(step))
+                #print("Model saved in file: %s" % save_path)
 
 
     # eval
@@ -71,4 +71,4 @@ with tf.Session() as sess:
         best_step = step
 
     with open("final_output", "w") as f:
-        f.write(zip(inputs_eval, labels_eval, prediction_eval))
+        f.write(str(zip(inputs_eval, labels_eval, prediction_eval)))
