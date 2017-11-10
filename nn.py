@@ -70,5 +70,5 @@ with tf.Session() as sess:
         best_accuracy = accuracy_eval
         best_step = step
 
-    with open("final_output", "w") as f:
-        f.write(str(zip(inputs_eval, labels_eval, prediction_eval)))
+    with open("final_output.txt", "w") as f:
+        f.write(str(list(zip(inputs_eval, labels_eval, prediction_eval))))
